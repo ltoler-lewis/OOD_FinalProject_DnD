@@ -1,3 +1,5 @@
+import java.util.*;
+
 public abstract class Character{
 	int strength;
 	int intelligence;
@@ -8,7 +10,13 @@ public abstract class Character{
 	
 	int level;
 	int xp;
+	int health;
 	
-	//Array of items since all characters can carry something
+	private List<Observer> str_observers;
+	
+	Bag bag;
+
+	
+	
 	
 }
