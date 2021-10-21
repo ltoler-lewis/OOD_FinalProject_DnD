@@ -1,5 +1,6 @@
 //Will include implementation of Equipment iterator
 
+import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,25 +8,17 @@ import java.io.InputStreamReader;
 
 
 public class Bag implements EquipmentIterator, Observer {
-	List<Equipment> items;
+	List<Equipment> items = new ArrayList<Equipment>();;
 	int position = 0;
-	int maxSize;
-	//Figure out how to reference STR of Character to get actual maximum size
-	//FIXME
-	//Character owner;
-	//MAKE THIS OBSERVER AND UPDATE WHENEVER STR IS CHANGED 
- 
-	public Bag(List<Equipment> items) {
-		this.items = items;
-		
-		//FIXME - Replace with reference to Character's STR
-		maxSize = items.size();
+	double maxWeight;
+	double currentWeight=0;
+
+	
+	public Bag (Character c) {
+		c.registerSTRObserver(this);
+		update(c.getStr());
 	}
 	
-	public Bag (int size) {
-		maxSize = size;
-	}
- 
 	public Equipment next() {
 		
 		Equipment item = items.get(position);
@@ -49,6 +42,7 @@ public class Bag implements EquipmentIterator, Observer {
 		for(int x = 0; x < items.size(); x++){
 			if(items.get(x).name.equals(name)) {
 				Equipment item = items.get(x);
+				currentWeight=currentWeight-item.weight;
 				items.remove(x);
 				return item;
 			}
@@ -58,7 +52,19 @@ public class Bag implements EquipmentIterator, Observer {
 		
 	}
 	
-	public String getContents() {
+	public void addItem(Equipment e) {
+		if((currentWeight+e.weight)<maxWeight) {
+			items.add(e);
+			currentWeight+=e.weight;
+			//System.out.println(e.name);
+			//System.out.println(currentWeight);
+		}
+		else {
+			System.out.println ("You do not have the strength to carry this item");
+		}
+	}
+	
+ 	public String getContents() {
 		String output = "The contents of your bag are: \n";
 		for (int x = 0; x < items.size(); x++) {
 			output += items.get(x).name;
@@ -78,10 +84,11 @@ public class Bag implements EquipmentIterator, Observer {
 
 	@Override
 	public void update(int strength) {
-		maxSize = strength * 5;
+		maxWeight = strength * 5;
+		//System.out.println("Max weight: " + maxWeight);
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		String readIn = "";
-		while (maxSize < items.size()) {
+		while (maxWeight < currentWeight) {
 			System.out.println("You are holding too many items. Please choose something to remove.");
 			printContents();
 			

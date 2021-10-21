@@ -3,4 +3,10 @@ public class Equipment {
 	int cost;
 	String name;
 	
+	public Equipment(double w, int c, String n) {
+		weight = w;
+		cost = c;
+		name = n;
+				
+	}
 }
