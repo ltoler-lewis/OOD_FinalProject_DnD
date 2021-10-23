@@ -9,7 +9,7 @@ public class Playtime {
 		CharacterStats_Builder character1_builder = new CharacterStats_Builder_Human();
 		Bag_Factory character1_bagFactory = new Bag_Druid();
 		
-		Character character1 = character1_builder.setStrength().setCharisma().setConstitution().setDexterity().setIntelligence().setWisdom().build();
+		Character character1 = character1_builder.setStrength().setCharisma().setConstitution().setDexterity().setIntelligence().setWisdom().setTraits().build();
 		
 		Bag bag1 = character1_bagFactory.createBag(character1);
 		character1.addBag(bag1);
@@ -24,7 +24,7 @@ public class Playtime {
 		CharacterStats_Builder character2_builder = new CharacterStats_Builder_HalfOrc();
 		Bag_Factory character2_bagFactory = new Bag_Fighter();
 		
-		Character character2 = character2_builder.setStrength().setCharisma().setConstitution().setDexterity().setIntelligence().setWisdom().build();
+		Character character2 = character2_builder.setStrength().setCharisma().setConstitution().setDexterity().setIntelligence().setWisdom().setTraits().build();
 		
 		Bag bag2 = character2_bagFactory.createBag(character2);
 		character2.addBag(bag2);

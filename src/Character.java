@@ -195,8 +195,15 @@ public class Character{
 	}
 
 	public void printCharacter() {
-		System.out.println("Your name is " + name + ". You are a " + getAlignmentString() + " " + getRaceString() + " " + getClassString() + ".\n");
+		System.out.println("\n\nYour name is " + name + ". You are a " + getAlignmentString() + " " + getRaceString() + " " + getClassString() + ".\n");
 		System.out.println("Your stats are:\n" + "Strength: " + strength + "\nDexterity: " + dexterity + "\nConstitution: " + constitution + "\nIntelligence: " + intelligence + "\nWisdom: " + wisdom + "\nCharisma: " + charisma + "\n");
+		System.out.println("Your traits are: ");
+		if(traits.size()!=0) {
+			for(int x=0; x< traits.size(); x++) {
+				System.out.println("         " + traits.get(x).name + " " + traits.get(x).description);
+			}
+		}
+			
 	}
 
 

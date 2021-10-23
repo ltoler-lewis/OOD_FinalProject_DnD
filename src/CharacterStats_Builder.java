@@ -1,9 +1,6 @@
 import java.util.Random;
 import java.util.Arrays;
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 
 public abstract class CharacterStats_Builder {
@@ -12,13 +9,13 @@ public abstract class CharacterStats_Builder {
 
 	//String name;
 	Character.Races race;
-	int strBuff;
-	int wisBuff;
-	int intBuff;
-	int dexBuff;
-	int charBuff;
-	int conBuff;
-	List<Trait> traits;
+	int strBuff=0;
+	int wisBuff=0;
+	int intBuff=0;
+	int dexBuff=0;
+	int charBuff=0;
+	int conBuff=0;
+	List<Trait> traits = new ArrayList<Trait>();
 	//List<String> toppings = new ArrayList<String>();
 	
 	
@@ -43,7 +40,7 @@ public abstract class CharacterStats_Builder {
 	}
 	
 	public Character build() {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+		//BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		Character chara = new Character();
 				
 		chara.setRace(this.race);

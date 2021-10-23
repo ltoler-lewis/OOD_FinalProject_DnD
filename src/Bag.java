@@ -60,7 +60,7 @@ public class Bag implements EquipmentIterator, Observer {
 			//System.out.println(currentWeight);
 		}
 		else {
-			System.out.println ("You do not have the strength to carry this item");
+			System.out.println ("You do not have the strength to carry "+ e.name);
 		}
 	}
 	
@@ -105,6 +105,9 @@ public class Bag implements EquipmentIterator, Observer {
 		
 	}
 	
+	public int getItemCount() {
+		return items.size();
+	}
 	
 	
 	

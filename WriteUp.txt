@@ -1,0 +1,13 @@
+This project is designed to generate a new character for a Dungeons and Dragons campaign. It rolls random numbers for their stats and automatically fills their bag with class-specific items. 
+Right now it only generates two example characters instead of allowing the user to define the type of character that they would like to play. This is because I struggled with linking everything together in such a way as to be truly dynamic and user-driven. Additionally, I have only defined four of the classes and the races. 
+The design patterns that I finally used are the Iterator, the Builder, the Factory, and the Observer. 
+Items in the game are stored inside a Bag (also defined). In order for the user to theoretically access the various items, an Iterator needed to be defined.
+The amount of weight that a character can carry is defined by their strength. A future fleshed-out version of this project would include the ability to level up a character’s stats. The Bag implements the Observer class to watch for this change.  The Character object has a list of classes observing it’s strength, so if the strength is ever increased the observers, here the Bag, would be notified. When notified, the Bag would then update it maximum weight.
+Generating the initial stats that a player is issued felt very similar to the Pizza Store Builder example in the textbook, so I went with that.  The Builder generates the random initial stats for the character then increases some of them based on the race of the character. Done in this way, the Builder could be extended and modified to support non-random stat assignments (i.e. user input).
+The initial items that a character is issued can be pretty complex and messy to implement directly, so I abstracted it by creating a Factory pattern for the Bag that adds items to the bag based on the character’s class.
+Future extensions would include (in order of priority): User input; All 9 initial races; All initial classes; Extending Weapons to have Ranged and Melee; Adding Armor; Adding the Dice Roller, Adding Level-up mechanics; I would also need to implement minimum stats for the characters when randomly generating stats (I would occasionally get cases where the character was too weak to carry all their initial stuff).
+I had actually never done unit testing before so that was a very new thing I had to learn.
+The primary challenge for me was planning out where the design patterns would go. Design patterns really benefit from planning ahead and I still have a tendency to start coding and only plan ahead in short bursts. More than that, I am not necessarily a creative person, so coming up with ideas of where the patterns could go was not easy.
+
+
+
